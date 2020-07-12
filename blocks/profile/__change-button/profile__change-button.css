@@ -1,0 +1,26 @@
+.profile__change-button {
+  background-image: url(../../../images/change-button.png);
+  width: 24px;
+  height: 24px;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  border: solid #545454 thin;
+  margin: 41px 0 0;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity linear 0.5s;
+}
+
+.profile__change-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 567px) {
+  .profile__change-button {
+    width: 18px;
+    height: 18px;
+    margin: 30px 0 0;
+  }
+}

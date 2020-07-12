@@ -1,0 +1,23 @@
+.form__item {
+  margin-bottom: 30px;
+  border: none;
+  border-bottom-style: solid;
+  border-bottom-color: #545454;
+  border-bottom-width: thin;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.form__item:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 567px) {
+  .form__item {
+    margin-bottom: 20px;
+  }
+
+  .form__item:last-of-type {
+    margin-bottom: 30px;
+  }
+}

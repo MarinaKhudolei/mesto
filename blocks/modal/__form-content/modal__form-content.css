@@ -1,0 +1,9 @@
+.modal__form-content {
+  margin: 34px 36px 36px;
+}
+
+@media screen and (max-width: 567px) {
+  .modal__form-content {
+    margin: 17px 18px 18px;
+  }
+}

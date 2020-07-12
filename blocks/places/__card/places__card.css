@@ -1,0 +1,23 @@
+.places__card {
+  max-width: 280px;
+  max-height: 360px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: #FFF;
+  color: #000;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 642px) {
+  .places__card {
+    margin-bottom: 20px;
+  }
+
+  .places__card:last-child {
+    margin-bottom: 0;
+  }
+}

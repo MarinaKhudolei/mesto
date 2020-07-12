@@ -1,0 +1,10 @@
+.places__button {
+  width: 20px;
+  height: 18px;
+  background-image: url(../../../images/like-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  background-color: white;
+}

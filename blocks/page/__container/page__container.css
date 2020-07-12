@@ -1,0 +1,18 @@
+.page__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+}
+
+@media screen and (max-width: 825px) {
+  .page__container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .page__container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,23 @@
+.form__submit-button {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: none;
+  height: 50px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.2;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity linear 0.5s;
+}
+
+.form__submit-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 567px) {
+  .form__submit-button {
+    height: 40px;
+  }
+}

@@ -1,0 +1,10 @@
+@import url(./__hidden/content__hidden.css);
+@import url(./__add-button/content__add-button.css);
+
+.content {
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
