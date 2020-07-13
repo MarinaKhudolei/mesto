@@ -8,20 +8,20 @@ let profileProf = document.querySelector('.profile__profession');
 let form = document.querySelector('.form');
 
 function openModal () {
-    myModal.classList.add('modal__opened');
+    myModal.classList.add('modal_opened');
+    formName.value = profileName.textContent;
+    formProf.value = profileProf.textContent;
 }
 
 
 function closeModal () {
-    myModal.classList.remove('modal__opened');
-    formName.value = profileName.textContent;
-    formProf.value = profileProf.textContent;
+    myModal.classList.remove('modal_opened');
 }
 
 function changeContent (evt) {
     profileName.textContent = formName.value;
     profileProf.textContent = formProf.value;
-    myModal.classList.remove('modal__opened');
+    closeModal();
     evt.preventDefault();
 }
 

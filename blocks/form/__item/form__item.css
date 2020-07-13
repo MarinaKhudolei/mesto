@@ -1,9 +1,11 @@
 .form__item {
+  width: 100%;
   margin-bottom: 30px;
+  padding-bottom: 13px;
   border: none;
   border-bottom-style: solid;
-  border-bottom-color: #545454;
-  border-bottom-width: thin;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  border-bottom-width: 1px;
   font-size: 14px;
   line-height: 1.2;
 }
@@ -12,12 +14,17 @@
   margin-bottom: 48px;
 }
 
+.form__item:focus {
+  background: #AFEEEE;
+}
+
 @media screen and (max-width: 567px) {
   .form__item {
     margin-bottom: 20px;
+    padding-bottom: 5px;
   }
 
   .form__item:last-of-type {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 }

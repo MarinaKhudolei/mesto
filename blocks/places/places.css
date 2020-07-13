@@ -7,19 +7,10 @@
 .places {
   max-width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, auto));
   grid-column-gap: 18px;
   grid-row-gap: 20px;
   margin: 0 0 66px;
   padding: 0;
-}
-
-@media screen and (max-width: 642px) {
-  .places {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0 48px;
-  }
+  justify-content: space-around;
 }

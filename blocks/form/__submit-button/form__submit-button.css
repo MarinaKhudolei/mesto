@@ -3,7 +3,8 @@
   background-color: black;
   color: white;
   border: none;
-  height: 50px;
+  border-radius: 2px;
+  padding: 14px 0 18px;
   font-weight: normal;
   font-size: 18px;
   line-height: 1.2;

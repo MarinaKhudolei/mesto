@@ -1,12 +1,12 @@
 .profile__change-button {
-  background-image: url(../../../images/change-button.png);
+  background-image: url(../../../images/change-button.svg);
   width: 24px;
   height: 24px;
   background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #000;
-  border: solid #545454 thin;
+  background-color: transparent;
+  border: solid 1px #FFFFFF;
   margin: 41px 0 0;
   cursor: pointer;
   opacity: 1;

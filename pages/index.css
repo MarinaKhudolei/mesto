@@ -6,6 +6,6 @@
 @import url(../blocks/places/places.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/modal/modal.css);
-@import url(../blocks/modal/__opened/modal__opened.css);
+@import url(../blocks/modal/_opened/modal_opened.css);
 @import url(../blocks/form/form.css);
 @import url(../fonts/inter.css);

@@ -9,64 +9,63 @@
 <body class="page">
     <div class="page__container">
         <header class="header">
-            <img src="./images/logo.svg" alt="Лого" class="header__logo">
+            <img src="./images/logo.svg" alt="Логотип сайта Место." class="header__logo">
         </header>
         <main class="content">
-            <h1 class="content__hidden">Сервис Mesto для ваших фотографий</h1>
             <section class="profile">
                 <div class="profile__content">
-                    <img class="profile__image" src="./images/profile-image.jpg" alt="Фото профиля">
+                    <img class="profile__image" src="./images/profile-image.jpg" alt="Фото профиля.">
                     <div class="profile__container">
                         <div class="profile__info">
                             <p class="profile__name">Жак-Ив Кусто</p>
                             <p class="profile__profession">Исследователь океана</p>
                         </div>
-                        <button type="button" class="profile__change-button"></button>
+                        <button type="button" class="profile__change-button" name="changeButton"></button>
                     </div>
                 </div>
-                <button type="button" class="content__add-button"></button>
+                <button type="button" class="content__add-button" name="addButton"></button>
             </section>
             <section class="places">
                 <div class="places__card">
-                    <img class="places__image" src="./images/карачаевск.jpg" alt="Карачаевск">
+                    <img class="places__image" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесская старая церквушка.">
                     <div class="places__rating">
                         <h2 class="places__title">Карачаевск</h2>
-                        <button type="button" class="places__button"></button>
+                        <button type="button" class="places__button" name="likeButton"></button>
                     </div>
                 </div>
                 <div class="places__card">
-                    <img class="places__image" src="./images/эльбрус.jpg" alt="Эльбрус">
+                    <img class="places__image" src="./images/elbrus.jpg" alt="Гора Эльбрус на закате.">
                     <div class="places__rating">
                         <h2 class="places__title">Гора Эльбрус</h2>
-                        <button type="button" class="places__button"></button>
+                        <button type="button" class="places__button" name="likeButton"></button>
                     </div>
                 </div>
                 <div class="places__card">
-                    <img class="places__image" src="./images/домбай.jpg" alt="Домбай">
+                    <img class="places__image" src="./images/dombai.jpg" alt="Горная территория Домбай в Карачаево-Черкессии.">
                     <div class="places__rating">
                         <h2 class="places__title">Домбай</h2>
-                        <button type="button" class="places__button"></button>
+                        <button type="button" class="places__button" name="likeButton"></button>
                     </div>
                 </div>
                 <div class="places__card">
-                    <img class="places__image" src="./images/эльбрус.jpg" alt="Эльбрус">
+                    <img class="places__image" src="./images/elbrus.jpg" alt="Гора Эльбрус на закате.">
                     <div class="places__rating">
                         <h2 class="places__title">Гора Эльбрус</h2>
-                        <button type="button" class="places__button"></button>
+                        <button type="button" class="places__button" name="likeButton"></button>
                     </div>
                 </div>
                 <div class="places__card">
-                    <img class="places__image" src="./images/домбай.jpg" alt="Домбай">
+                    <img class="places__image" src="./images/dombai.jpg" alt="Горная территория Домбай в Карачаево-Черкессии.">
                     <div class="places__rating">
                         <h2 class="places__title">Домбай</h2>
-                        <button type="button" class="places__button"></button>
+                        <button type="button" class="places__button" name="likeButton"></button>
                     </div>
                 </div>
                 <div class="places__card">
-                    <img class="places__image" src="./images/карачаевск.jpg" alt="Карачаевск">
+                    <img class="places__image" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесская старая церквушка.">
                     <div class="places__rating">
                         <h2 class="places__title">Карачаево-Черкессия</h2>
-                        <button type="button" class="places__button"></button>
+                        <button type="button" class="places__button" name="likeButton"></button>
                     </div>
                 </div>
             </section>
@@ -74,19 +73,17 @@
         <footer class="footer">
             <p class="footer__copyright" lang="en">&copy; 2020 Mesto Russia</p>
         </footer>
-    </div>
-    <section class="modal">
+    </div> 
+    <div class="modal">
         <div class="modal__container">
-            <div class="modal__form-content">
-                <h3 class="modal__title">Редактировать профиль</h3>
-                <form class="form" action="#">
-                    <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто">
-                    <input class="form__item form__item_type_profession" type="text" value="Исследователь океана">
-                    <button class="form__submit-button" type="submit">Сохранить</button>
-                </form>
-            </div>
-            <button class="modal__close-button"></button>
+            <h3 class="modal__title">Редактировать профиль</h3>
+            <form class="form" action="#" method="post" name="myForm">
+                <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто" name="formName">
+                <input class="form__item form__item_type_profession" type="text" value="Исследователь океана" name="formProf">
+                <button class="form__submit-button" type="submit" name="submitButton">Сохранить</button>
+            </form>
+            <button class="modal__close-button" type="button" name="closeButton"></button>
         </div>
-    </section>
+    </div>
     <script src="./scripts/script.js"></script>
 </body>
