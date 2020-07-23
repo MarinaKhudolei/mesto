@@ -1,5 +1,6 @@
 .form__item {
   width: 100%;
+  min-width: 358px;
   margin-bottom: 30px;
   padding-bottom: 13px;
   border: none;

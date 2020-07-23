@@ -26,64 +26,54 @@
                 <button type="button" class="content__add-button" name="addButton"></button>
             </section>
             <section class="places">
-                <div class="places__card">
-                    <img class="places__image" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесская старая церквушка.">
-                    <div class="places__rating">
-                        <h2 class="places__title">Карачаевск</h2>
-                        <button type="button" class="places__button" name="likeButton"></button>
-                    </div>
-                </div>
-                <div class="places__card">
-                    <img class="places__image" src="./images/elbrus.jpg" alt="Гора Эльбрус на закате.">
-                    <div class="places__rating">
-                        <h2 class="places__title">Гора Эльбрус</h2>
-                        <button type="button" class="places__button" name="likeButton"></button>
-                    </div>
-                </div>
-                <div class="places__card">
-                    <img class="places__image" src="./images/dombai.jpg" alt="Горная территория Домбай в Карачаево-Черкессии.">
-                    <div class="places__rating">
-                        <h2 class="places__title">Домбай</h2>
-                        <button type="button" class="places__button" name="likeButton"></button>
-                    </div>
-                </div>
-                <div class="places__card">
-                    <img class="places__image" src="./images/elbrus.jpg" alt="Гора Эльбрус на закате.">
-                    <div class="places__rating">
-                        <h2 class="places__title">Гора Эльбрус</h2>
-                        <button type="button" class="places__button" name="likeButton"></button>
-                    </div>
-                </div>
-                <div class="places__card">
-                    <img class="places__image" src="./images/dombai.jpg" alt="Горная территория Домбай в Карачаево-Черкессии.">
-                    <div class="places__rating">
-                        <h2 class="places__title">Домбай</h2>
-                        <button type="button" class="places__button" name="likeButton"></button>
-                    </div>
-                </div>
-                <div class="places__card">
-                    <img class="places__image" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесская старая церквушка.">
-                    <div class="places__rating">
-                        <h2 class="places__title">Карачаево-Черкессия</h2>
-                        <button type="button" class="places__button" name="likeButton"></button>
-                    </div>
-                </div>
+                
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright" lang="en">&copy; 2020 Mesto Russia</p>
         </footer>
-    </div> 
-    <div class="modal">
+    </div>
+    <div class="popup">
+        
+    </div>
+    <div class="modal modal_type_change-profile">
         <div class="modal__container">
             <h3 class="modal__title">Редактировать профиль</h3>
-            <form class="form" action="#" method="post" name="myForm">
+            <form class="form form_type_change-profile" action="#" method="post" name="changeProfileForm">
                 <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто" name="formName">
                 <input class="form__item form__item_type_profession" type="text" value="Исследователь океана" name="formProf">
                 <button class="form__submit-button" type="submit" name="submitButton">Сохранить</button>
             </form>
-            <button class="modal__close-button" type="button" name="closeButton"></button>
+            <button class="modal__close-button" type="button" name="changeProfileCloseButton"></button>
         </div>
     </div>
+    <div class="modal modal_type_add-place">
+        <div class="modal__container">
+            <h3 class="modal__title">Новое место</h3>
+            <form class="form form_type_add-place" action="#" method="post" name="addPlaceForm">
+                <input class="form__item form__item_type_title" type="text" value="Название" name="formTitle">
+                <input class="form__item form__item_type_image-link" type="text" value="Ссылка на картинку" name="formImageLink">
+                <button class="form__submit-button" type="submit" name="submitButton">Создать</button>
+            </form>
+            <button class="modal__close-button" type="button" name="addPlaceCloseButton"></button>
+        </div>
+    </div>
+    <template id="card">
+        <div class="places__card">
+            <button type="button" class="places__delete-button" name="deleteButton"></button>
+            <img class="places__image" src="" alt="">
+            <div class="places__rating">
+                <h2 class="places__title"></h2>
+                <button type="button" class="places__button" name="likeButton"></button>
+            </div>
+        </div>
+    </template>
+    <template id="popup">
+        <figure class="popup__container">
+            <button class="popup__close-button" type="button" name="popupCloseButton"></button>
+            <img class="popup__image" src="" alt="">
+            <figcaption class="popup__caption"></figcaption>
+        </figure>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>

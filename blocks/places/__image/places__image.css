@@ -1,4 +1,7 @@
 .places__image {
   height: 78%;
+  min-height: 282px;
+  max-height: 282px;
   width: 100%;
+  cursor: pointer;
 }

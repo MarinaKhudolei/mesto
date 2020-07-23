@@ -1,6 +1,8 @@
 .places__card {
+  position: relative;
   max-width: 280px;
   max-height: 360px;
+  min-height: 360px;
   width: 100%;
   display: block;
   object-fit: cover;

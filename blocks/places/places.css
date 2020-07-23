@@ -1,4 +1,5 @@
 @import url(./__card/places__card.css);
+@import url(./__delete-button/places__delete-button.css);
 @import url(./__image/places__image.css);
 @import url(./__rating/places__rating.css);
 @import url(./__title/places__title.css);
@@ -8,6 +9,7 @@
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+  grid-template-rows: repeat(auto-fit, 360px);
   grid-column-gap: 18px;
   grid-row-gap: 20px;
   margin: 0 0 66px;
