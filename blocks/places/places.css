@@ -1,9 +1,4 @@
 @import url(./__card/places__card.css);
-@import url(./__delete-button/places__delete-button.css);
-@import url(./__image/places__image.css);
-@import url(./__rating/places__rating.css);
-@import url(./__title/places__title.css);
-@import url(./__button/places__button.css);
 
 .places {
   max-width: 100%;

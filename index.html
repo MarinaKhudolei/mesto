@@ -33,7 +33,7 @@
             <p class="footer__copyright" lang="en">&copy; 2020 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup">
+    <div class="popup-window">
         
     </div>
     <div class="modal modal_type_change-profile">
@@ -59,17 +59,17 @@
         </div>
     </div>
     <template id="card">
-        <div class="places__card">
-            <button type="button" class="places__delete-button" name="deleteButton"></button>
-            <img class="places__image" src="" alt="">
-            <div class="places__rating">
-                <h2 class="places__title"></h2>
-                <button type="button" class="places__button" name="likeButton"></button>
+        <div class="places__card card">
+            <button type="button" class="card__delete-button" name="deleteButton"></button>
+            <img class="card__image" src="" alt="">
+            <div class="card__rating">
+                <h2 class="card__title"></h2>
+                <button type="button" class="card__button" name="likeButton"></button>
             </div>
         </div>
     </template>
     <template id="popup">
-        <figure class="popup__container">
+        <figure class="popup">
             <button class="popup__close-button" type="button" name="popupCloseButton"></button>
             <img class="popup__image" src="" alt="">
             <figcaption class="popup__caption"></figcaption>

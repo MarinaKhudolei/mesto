@@ -1,17 +1,20 @@
-.places__button {
-  width: 20px;
-  height: 18px;
-  background-image: url(../../../images/like-button.svg);
+.card__delete-button {
+  width: 18px;
+  height: 19px;
+  background-image: url(../../../images/delete-button.svg);
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
   background-position: center;
   background-color: transparent;
+  position: absolute;
+  top: 18px;
+  right: 15px;
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.5s linear;
 }
 
-.places__button:hover {
+.card__delete-button:hover {
   opacity: 0.6;
 }

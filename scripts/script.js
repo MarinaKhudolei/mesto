@@ -18,12 +18,14 @@ function changeContent (evt) {
 }
 
 changeButton.addEventListener('click', () => {
+    formName.value = profileName.textContent;
+    formProf.value = profileProf.textContent;
     toggleModal(changeProfileModal);
-})
+});
 
 changeProfileCloseButton.addEventListener('click', () => {
     toggleModal(changeProfileModal);
-})
+});
 
 //create and render cards
 
@@ -60,51 +62,47 @@ const cardsSection = document.querySelector('.places');
 initialCards.forEach((data) => {
     renderCard(data);
 });
-// create popup
+
+//open popup
 const popupTemplate = document.querySelector('#popup').content;
-const popup =  document.querySelector('.popup');
+const popup =  document.querySelector('.popup-window');
+const openPopupImage = popupTemplate.cloneNode(true);
+const popupContainer = openPopupImage.querySelector('.popup');
+const popupImage = openPopupImage.querySelector('.popup__image');
+const popupCaption = openPopupImage.querySelector('.popup__caption');
+const popupCloseButton = openPopupImage.querySelector('.popup__close-button');
 
-function createPopup(data) {
-    const openPopupImage = popupTemplate.cloneNode(true);
-    const popupContainer = openPopupImage.querySelector('.popup__container');
-    const popupImage = openPopupImage.querySelector('.popup__image');
-    const popupCaption = openPopupImage.querySelector('.popup__caption');
-    const popupCloseButton = openPopupImage.querySelector('.popup__close-button');
-
-    popup.classList.add('popup_opened');
+function openPopup(data) {
+    popup.classList.add('popup-window_opened');
     popup.append(popupContainer);
     popupCaption.textContent = data.name;
     popupImage.src = data.link;
     popupImage.alt = data.name;
-
-    popupCloseButton.addEventListener('click', () => {
-        popup.classList.remove('popup_opened');
-        const myPopup = popupCloseButton.closest('.popup__container');
-        myPopup.remove();
-    })
-
-    return openPopupImage;
 }
+
+popupCloseButton.addEventListener('click', () => {
+    popup.classList.remove('popup-window_opened');
+});
 
 function createCard(data) {
     const cardElement = cardTemplate.cloneNode(true);
 
-    const cardTitle = cardElement.querySelector('.places__title');
-    const cardImage = cardElement.querySelector('.places__image');
+    const cardTitle = cardElement.querySelector('.card__title');
+    const cardImage = cardElement.querySelector('.card__image');
     cardImage.addEventListener('click', () => {
-        createPopup(data);
-    })
+        openPopup(data);
+    });
 
-    const deleteCardButton = cardElement.querySelector('.places__delete-button');
+    const deleteCardButton = cardElement.querySelector('.card__delete-button');
     deleteCardButton.addEventListener('click', function () {
         const myCard = deleteCardButton.closest('.places__card');
         myCard.remove();
-    })
+    });
 
-    const likeCardButton = cardElement.querySelector('.places__button');
+    const likeCardButton = cardElement.querySelector('.card__button');
     likeCardButton.addEventListener('click', function() {
-        likeCardButton.style.backgroundImage = "url('images/black-like-button.svg')";
-    })
+        likeCardButton.classList.toggle('card__button_liked');
+    });
 
     cardTitle.textContent = data.name;
     cardImage.src = data.link;
@@ -135,11 +133,13 @@ function addPlace(evt) {
 
 addButton.addEventListener('click', () => {
     toggleModal(addPlaceModal);
-})
+    formTitle.value = "Название";
+    formImageLink.value = "Ссылка на картинку";
+});
 
 addPlaceCloseButton.addEventListener('click', () => {
     toggleModal(addPlaceModal);
-})
+});
 
 changeProfileForm.addEventListener('submit', changeContent);
 addPlaceForm.addEventListener('submit', addPlace);
@@ -147,12 +147,5 @@ addPlaceForm.addEventListener('submit', addPlace);
 //open and close modals
 
 function toggleModal(modalWindow) {
-    if (!modalWindow.classList.contains('modal_opened')) {
-        formName.value = profileName.textContent;
-        formProf.value = profileProf.textContent;
-        formTitle.value = "Название";
-        formImageLink.value = "Ссылка на картинку";
-    }
-
     modalWindow.classList.toggle('modal_opened');
 }
