@@ -11,6 +11,10 @@
   flex-direction: column;
 }
 
+.modal__container:hover {
+    cursor: default;
+}
+
 @media screen and (max-width: 567px) {
   .modal__container {
     max-width: 270px;

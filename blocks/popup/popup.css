@@ -16,6 +16,10 @@
   margin: 90px auto 90px;
 }
 
+.popup:hover {
+  cursor: default;
+}
+
 @media screen and (max-width: 567px) {
   .popup {
     max-height: 300px;
