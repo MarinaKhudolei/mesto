@@ -13,18 +13,18 @@ const changeProfileForm = document.querySelector('.form_type_change-profile');
 function changeContent (evt) {
     profileName.textContent = formName.value;
     profileProf.textContent = formProf.value;
-    toggleModal(changeProfileModal);
+    closeModal(changeProfileModal);
     evt.preventDefault();
 }
 
 changeButton.addEventListener('click', () => {
     formName.value = profileName.textContent;
     formProf.value = profileProf.textContent;
-    toggleModal(changeProfileModal);
+    openModal(changeProfileModal);
 });
 
 changeProfileCloseButton.addEventListener('click', () => {
-    toggleModal(changeProfileModal);
+    closeModal(changeProfileModal);
 });
 
 //create and render cards
@@ -128,24 +128,49 @@ const addPlaceForm = document.querySelector('.form_type_add-place');
 function addPlace(evt) {
     evt.preventDefault();
     renderCard({name: formTitle.value, link: formImageLink.value});
-    toggleModal(addPlaceModal);
+    closeModal(addPlaceModal);
 }
 
 addButton.addEventListener('click', () => {
-    toggleModal(addPlaceModal);
+    openModal(addPlaceModal);
     formTitle.value = "Название";
     formImageLink.value = "Ссылка на картинку";
 });
 
 addPlaceCloseButton.addEventListener('click', () => {
-    toggleModal(addPlaceModal);
+    closeModal(addPlaceModal);
 });
 
 changeProfileForm.addEventListener('submit', changeContent);
 addPlaceForm.addEventListener('submit', addPlace);
 
 //open and close modals
-
-function toggleModal(modalWindow) {
-    modalWindow.classList.toggle('modal_opened');
+function openModal(modalWindow) {
+    modalWindow.classList.add('modal_opened');
 }
+
+function closeModal(modalWindow) {
+    modalWindow.classList.remove('modal_opened');
+}
+
+//close popups with buttons and clicks
+const modal = Array.from(document.querySelectorAll('.modal'));
+    //close modals
+const handleModalListeners = () => {
+    modal.forEach((modalWindow) => {
+        closeModal(modalWindow);
+    });
+    popup.classList.remove('popup-window_opened');
+}
+        //if escape is pressed
+document.addEventListener('keydown', function(evt){
+    if (evt.key === "Escape") {
+        handleModalListeners();
+    }
+});
+        //if overlay is clicked
+document.addEventListener('click', function(evt) {
+    if((evt.target.classList.contains('modal')) || (evt.target.classList.contains('popup-window'))) {
+        handleModalListeners();
+    }
+});

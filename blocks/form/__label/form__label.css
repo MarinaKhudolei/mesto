@@ -1,0 +1,18 @@
+.form__label {
+  margin-bottom: 30px;
+  width: 100%;
+  min-width: 358px;
+}
+
+.form__label:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 567px) {
+  .form__label {
+    margin-bottom: 20px;
+    min-width: 200px;
+  }
+  .form__label:last-of-type {
+    margin-bottom: 25px;
+  }

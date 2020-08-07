@@ -39,9 +39,15 @@
     <div class="modal modal_type_change-profile">
         <div class="modal__container">
             <h3 class="modal__title">Редактировать профиль</h3>
-            <form class="form form_type_change-profile" action="#" method="post" name="changeProfileForm">
-                <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто" name="formName">
-                <input class="form__item form__item_type_profession" type="text" value="Исследователь океана" name="formProf">
+            <form class="form form_type_change-profile" action="#" method="post" name="changeProfileForm" id="changeProfileForm" novalidate>
+                <label class="form__label">
+                    <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто" name="formName" required minlength="2" maxlength="40" autocomplete="off">
+                    <span class="form__error" id="formName-error"></span>
+                </label>
+                <label class="form__label">
+                    <input class="form__item form__item_type_profession" type="text" value="Исследователь океана" name="formProf" required minlength="2" maxlength="200" autocomplete="off">
+                    <span class="form__error" id="formProf-error"></span>
+                </label>
                 <button class="form__submit-button" type="submit" name="submitButton">Сохранить</button>
             </form>
             <button class="modal__close-button" type="button" name="changeProfileCloseButton"></button>
@@ -50,10 +56,16 @@
     <div class="modal modal_type_add-place">
         <div class="modal__container">
             <h3 class="modal__title">Новое место</h3>
-            <form class="form form_type_add-place" action="#" method="post" name="addPlaceForm">
-                <input class="form__item form__item_type_title" type="text" value="Название" name="formTitle">
-                <input class="form__item form__item_type_image-link" type="text" value="Ссылка на картинку" name="formImageLink">
-                <button class="form__submit-button" type="submit" name="submitButton">Создать</button>
+            <form class="form form_type_add-place" action="#" method="post" name="addPlaceForm" id="addPlaceForm" novalidate>
+                <label class="form__label">
+                    <input class="form__item form__item_type_title form__item_disabled" type="text" value="Название" name="formTitle" required minlength="1" maxlength="30" autocomplete="off">
+                    <span class="form__error" id="formTitle-error"></span>
+                </label>
+                <label class="form__label">
+                    <input class="form__item form__item_type_image-link form__item_disabled" type="url" value="Ссылка на картинку" name="formImageLink" required autocomplete="off"> 
+                    <span class="form__error" id="formImageLink-error"></span>
+                </label>
+                <button class="form__submit-button form__submit-button_disabled" type="submit" name="submitButton" disabled>Создать</button>
             </form>
             <button class="modal__close-button" type="button" name="addPlaceCloseButton"></button>
         </div>
@@ -76,4 +88,5 @@
         </figure>
     </template>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
