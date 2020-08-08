@@ -10,7 +10,6 @@
 @import url(../blocks/modal/modal.css);
 @import url(../blocks/modal/_opened/modal_opened.css);
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__item/_disabled/form__item_disabled.css);
 @import url(../blocks/form/__item/_invalid/form__item_invalid.css);
 @import url(../blocks/form/__error/_visible/form__error_visible.css);
 @import url(../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css);

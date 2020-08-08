@@ -17,10 +17,35 @@ function changeContent (evt) {
     evt.preventDefault();
 }
 
+const disableButton = (form) => {
+    const buttonSubmit = form.querySelector('.form__submit-button');
+    buttonSubmit.classList.add('form__submit-button_disabled');
+    buttonSubmit.disabled = true;
+};
+
+const enableButton = (form) => {
+    const buttonSubmit = form.querySelector('.form__submit-button');
+    buttonSubmit.classList.remove('form__submit-button_disabled');
+    buttonSubmit.disabled = false;
+};
+
+const clearForm = (form) => {
+    const inputs = Array.from(form.querySelectorAll('.form__item'));
+    inputs.forEach((inputElement) => {
+        const errorElement = form.querySelector(`#${inputElement.name}-error`);
+        inputElement.classList.remove('form__item_invalid');
+        errorElement.textContent='';
+        errorElement.classList.remove('form__error_visible');
+    });
+};
+
 changeButton.addEventListener('click', () => {
     formName.value = profileName.textContent;
     formProf.value = profileProf.textContent;
     openModal(changeProfileModal);
+
+    clearForm(changeProfileForm);
+    enableButton(changeProfileForm);
 });
 
 changeProfileCloseButton.addEventListener('click', () => {
@@ -74,6 +99,7 @@ const popupCloseButton = openPopupImage.querySelector('.popup__close-button');
 
 function openPopup(data) {
     popup.classList.add('popup-window_opened');
+    handleEscapeListener(popup);
     popup.append(popupContainer);
     popupCaption.textContent = data.name;
     popupImage.src = data.link;
@@ -133,8 +159,11 @@ function addPlace(evt) {
 
 addButton.addEventListener('click', () => {
     openModal(addPlaceModal);
-    formTitle.value = "Название";
-    formImageLink.value = "Ссылка на картинку";
+    formTitle.value = "";
+    formImageLink.value = "";
+
+    clearForm(addPlaceForm);
+    disableButton(addPlaceForm);
 });
 
 addPlaceCloseButton.addEventListener('click', () => {
@@ -147,6 +176,7 @@ addPlaceForm.addEventListener('submit', addPlace);
 //open and close modals
 function openModal(modalWindow) {
     modalWindow.classList.add('modal_opened');
+    handleEscapeListener(modalWindow);
 }
 
 function closeModal(modalWindow) {
@@ -154,20 +184,23 @@ function closeModal(modalWindow) {
 }
 
 //close popups with buttons and clicks
-const modal = Array.from(document.querySelectorAll('.modal'));
-    //close modals
+function handleEscapeListener(modalWindow) {
+    document.addEventListener('keydown', function(evt){
+        if ((evt.key === "Escape") && (modalWindow.classList.contains('modal_opened'))){
+            closeModal(modalWindow);
+        } else if ((evt.key === "Escape") && (popup.classList.contains('popup-window_opened'))) {
+            popup.classList.remove('popup-window_opened');
+        }
+    });
+}
+modal = Array.from(document.querySelectorAll('.modal'));
 const handleModalListeners = () => {
     modal.forEach((modalWindow) => {
         closeModal(modalWindow);
     });
     popup.classList.remove('popup-window_opened');
-}
-        //if escape is pressed
-document.addEventListener('keydown', function(evt){
-    if (evt.key === "Escape") {
-        handleModalListeners();
-    }
-});
+};
+
         //if overlay is clicked
 document.addEventListener('click', function(evt) {
     if((evt.target.classList.contains('modal')) || (evt.target.classList.contains('popup-window'))) {
