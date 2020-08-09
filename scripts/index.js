@@ -218,9 +218,8 @@ function closeModal(modalWindow) {
     document.removeEventListener("keydown", modalListener);
 }
 
-modal = Array.from(document.querySelectorAll(".modal"));
 const handleModalListeners = () => {
-    modal.forEach((modalWindow) => {
+    document.querySelectorAll(".modal").forEach((modalWindow) => {
         closeModal(modalWindow);
     });
     closePopup();
