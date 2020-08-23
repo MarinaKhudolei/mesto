@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title lang="en">Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
@@ -22,10 +22,10 @@
                             <p class="profile__name">Жак-Ив Кусто</p>
                             <p class="profile__profession">Исследователь океана</p>
                         </div>
-                        <button type="button" class="profile__change-button" name="changeButton"></button>
+                        <button type="button" class="profile__change-button" name="changeButton" aria-label="Изменить профиль"></button>
                     </div>
                 </div>
-                <button type="button" class="content__add-button" name="addButton"></button>
+                <button type="button" class="content__add-button" name="addButton" aria-label="Добавить карточку"></button>
             </section>
             <section class="places">
 
@@ -50,9 +50,9 @@
                     <input class="form__item form__item_type_profession" type="text" value="Исследователь океана" name="formProf" id="formProf" maxlength="200" minlength="2" required>
                     <span class="form__error" id="formProf-error"></span>
                 </label>
-                <button class="form__submit-button" type="submit" name="submitButton">Сохранить</button>
+                <button class="form__submit-button" type="submit" name="submitButton" aria-label="Сохранить изменения">Сохранить</button>
             </form>
-            <button class="modal__close-button" type="button" name="changeProfileCloseButton"></button>
+            <button class="modal__close-button" type="button" name="changeProfileCloseButton" aria-label="Закрыть форму"></button>
         </div>
     </div>
     <div class="modal modal_type_add-place">
@@ -67,28 +67,29 @@
                     <input class="form__item form__item_type_image-link" type="url" value="" placeholder="Ссылка на картинку" name="formImageLink" id="formImageLink" required>
                     <span class="form__error" id="formImageLink-error"></span>
                 </label>
-                <button class="form__submit-button form__submit-button_disabled" type="submit" name="submitButton" disabled>Создать</button>
+                <button class="form__submit-button form__submit-button_disabled" type="submit" name="submitButton" aria-label="Создать карточку" disabled>Создать</button>
             </form>
-            <button class="modal__close-button" type="button" name="addPlaceCloseButton"></button>
+            <button class="modal__close-button" type="button" name="addPlaceCloseButton" aria-label="Закрыть форму"></button>
         </div>
     </div>
     <template id="card-template">
         <div class="places__card card">
-            <button type="button" class="card__delete-button" name="deleteButton"></button>
+            <button type="button" class="card__delete-button" name="deleteButton" aria-label="Удалить карточку"></button>
             <img class="card__image" src="" alt="">
             <div class="card__rating">
                 <h2 class="card__title"></h2>
-                <button type="button" class="card__button" name="likeButton"></button>
+                <button type="button" class="card__button" name="likeButton" aria-label="Поставить лайк"></button>
             </div>
         </div>
     </template>
     <template id="popup">
         <figure class="popup">
-            <button class="popup__close-button" type="button" name="popupCloseButton"></button>
+            <button class="popup__close-button" type="button" name="popupCloseButton" aria-label="Закрыть картинку"></button>
             <img class="popup__image" src="" alt="">
             <figcaption class="popup__caption"></figcaption>
         </figure>
     </template>
     <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/utils.js"></script>
     <script src="scripts/FormValidator.js"></script>
 </body>

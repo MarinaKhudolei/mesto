@@ -1,11 +1,9 @@
 //import initial cards
 import { initialCards } from './initial-cards.js';
 
-//import classes
-import Card from './Card.js';
-
 //import functions
-import { closePopup } from './Card.js';
+import { Card } from './Card.js';
+import { closePopup } from './utils.js';
 
 //modals and their buttons
 const changeProfileModal = document.querySelector(".modal_type_change-profile");
