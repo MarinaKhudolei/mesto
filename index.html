@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -42,16 +41,13 @@
     <div class="modal modal_type_change-profile">
         <div class="modal__container">
             <h3 class="modal__title">Редактировать профиль</h3>
-            <form class="form form_type_change-profile" action="#" method="post" name="changeProfileForm"
-                id="changeProfileForm" novalidate>
+            <form class="form form_type_change-profile" name="changeProfileForm" id="changeProfileForm" novalidate>
                 <label class="form__label">
-                    <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто" name="formName"
-                        required minlength="2" maxlength="40" autocomplete="off">
+                    <input class="form__item form__item_type_name" type="text" value="Жак-Ив Кусто" name="formName" id="formName" maxlength="40" minlength="2" required>
                     <span class="form__error" id="formName-error"></span>
                 </label>
                 <label class="form__label">
-                    <input class="form__item form__item_type_profession" type="text" value="Исследователь океана"
-                        name="formProf" required minlength="2" maxlength="200" autocomplete="off">
+                    <input class="form__item form__item_type_profession" type="text" value="Исследователь океана" name="formProf" id="formProf" maxlength="200" minlength="2" required>
                     <span class="form__error" id="formProf-error"></span>
                 </label>
                 <button class="form__submit-button" type="submit" name="submitButton">Сохранить</button>
@@ -62,25 +58,21 @@
     <div class="modal modal_type_add-place">
         <div class="modal__container">
             <h3 class="modal__title">Новое место</h3>
-            <form class="form form_type_add-place" action="#" method="post" name="addPlaceForm" id="addPlaceForm"
-                novalidate>
+            <form class="form form_type_add-place" name="addPlaceForm" id="addPlaceForm" novalidate>
                 <label class="form__label">
-                    <input class="form__item form__item_type_title" type="text" value="" placeholder="Название"
-                        name="formTitle" required minlength="1" maxlength="30" autocomplete="off">
+                    <input class="form__item form__item_type_title" type="text" value="" placeholder="Название" name="formTitle" id="formTitle" maxlength="30" minlength="1" required>
                     <span class="form__error" id="formTitle-error"></span>
                 </label>
                 <label class="form__label">
-                    <input class="form__item form__item_type_image-link" type="url" value=""
-                        placeholder="Ссылка на картинку" name="formImageLink" required autocomplete="off">
+                    <input class="form__item form__item_type_image-link" type="url" value="" placeholder="Ссылка на картинку" name="formImageLink" id="formImageLink" required>
                     <span class="form__error" id="formImageLink-error"></span>
                 </label>
-                <button class="form__submit-button form__submit-button_disabled" type="submit" name="submitButton"
-                    disabled>Создать</button>
+                <button class="form__submit-button form__submit-button_disabled" type="submit" name="submitButton" disabled>Создать</button>
             </form>
             <button class="modal__close-button" type="button" name="addPlaceCloseButton"></button>
         </div>
     </div>
-    <template id="card">
+    <template id="card-template">
         <div class="places__card card">
             <button type="button" class="card__delete-button" name="deleteButton"></button>
             <img class="card__image" src="" alt="">
@@ -97,6 +89,6 @@
             <figcaption class="popup__caption"></figcaption>
         </figure>
     </template>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="scripts/index.js"></script>
+    <script src="scripts/FormValidator.js"></script>
 </body>
