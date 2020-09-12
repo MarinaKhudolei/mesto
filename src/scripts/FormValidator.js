@@ -78,15 +78,4 @@ class FormValidator {
     }
 }
 
-const enableValidation = (
-    {formSelector, } 
-) => {
-    const forms = Array.from(document.querySelectorAll(formSelector));
-
-    forms.forEach((formElement) => {
-        const validator = new FormValidator(classes, formElement);
-        validator.enableValidation();
-    });
-}
-
-enableValidation(classes); 
+export { classes, FormValidator };

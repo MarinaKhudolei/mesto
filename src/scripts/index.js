@@ -1,29 +1,19 @@
+import '../pages/index.css';
+
 //import initial cards
 import { initialCards } from './initial-cards.js';
 
-//import functions
+//import classes
 import { Card } from './Card.js';
-import { closePopup } from './utils.js';
+import { Section } from './Section.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo.js';
+import { classes, FormValidator } from './FormValidator.js';
 
 //modals and their buttons
-const changeProfileModal = document.querySelector(".modal_type_change-profile");
 const changeProfileButton = document.querySelector(".profile__change-button");
-const changeProfileCloseButton = changeProfileModal.querySelector(".modal__close-button");
-
-const addPlaceModal = document.querySelector('.modal_type_add-place');
 const addPlaceButton = document.querySelector('.content__add-button');
-const addPlaceCloseButton = addPlaceModal.querySelector(".modal__close-button");
-
-//open-close modals
-function openModal(modal) {
-    modal.classList.add('modal_opened');
-    document.addEventListener('keydown', modalEscapeListener);
-}
-
-function closeModal(modal) {
-    modal.classList.remove('modal_opened');
-    document.removeEventListener('keydown', modalEscapeListener);
-}
 
 //profile fields
 const profileName = document.querySelector('.profile__name');
@@ -37,6 +27,17 @@ const changeProfileProfession = changeProfileForm.querySelector('.form__item_typ
 const addPlaceForm = document.querySelector('.form_type_add-place');
 const addPlaceTitle = addPlaceForm.querySelector('.form__item_type_title');
 const addPlaceLink = addPlaceForm.querySelector('.form__item_type_image-link');
+
+//create new classes
+const changeProfileModal = new PopupWithForm('modal_type_change-profile', changeProfileFormSubmitHandler, changeProfileForm);
+const addPlaceModal = new PopupWithForm('modal_type_add-place', addPlace, addPlaceForm);
+const popupOverlay = new PopupWithImage('popup-window');
+const userInfo = new UserInfo(profileName, profileProfession);
+
+//handle image open
+function handleCardClick(data){
+    popupOverlay.open(data);
+}
 
 //handle submit button state
 const disableButton = (form) => {
@@ -64,76 +65,67 @@ const clearForm = (form) => {
 
 //open-close button listeners
 changeProfileButton.addEventListener('click', () => {
-    openModal(changeProfileModal);
-    changeProfileName.value = profileName.textContent;
-    changeProfileProfession.value = profileProfession.textContent;
+    changeProfileModal.open();
+    const userData = userInfo.getUserInfo();
+    changeProfileName.value = userData.name;
+    changeProfileProfession.value = userData.profession;
 
     clearForm(changeProfileForm);
     enableButton(changeProfileForm);
 });
 
-changeProfileCloseButton.addEventListener('click', ()=>{
-    closeModal(changeProfileModal);
-});
-
 addPlaceButton.addEventListener('click', ()=>{
-    openModal(addPlaceModal);
-    addPlaceTitle.value = '';
-    addPlaceLink.value = '';
+    addPlaceModal.open();
 
     clearForm(addPlaceForm);
     disableButton(addPlaceForm);
 });
 
-addPlaceCloseButton.addEventListener('click', ()=>{
-    closeModal(addPlaceModal);
-});
-
 //submit forms
-function changeProfileFormSubmitHandler(evt) {
-    evt.preventDefault();
-    profileName.textContent = changeProfileName.value;
-    profileProfession.textContent = changeProfileProfession.value;
-    closeModal(changeProfileModal);
+function changeProfileFormSubmitHandler(data) {
+    userInfo.setUserInfo(data.formName, data.formProf);
+
+    changeProfileModal.close();
 }
 
-changeProfileForm.addEventListener('submit', changeProfileFormSubmitHandler);
-
-//create cards
+//create default cards
 const placesSection = document.querySelector('.places');
 const cardTemplate = document.querySelector('#card-template').content;
 
-function renderCard(data) {
-    placesSection.prepend((new Card(data, cardTemplate)).getElement());
-}
+const cardList = new Section({items: initialCards, renderer: (item) => {
+    const card = new Card(item, cardTemplate, handleCardClick);
+    const cardElement = card.getElement();
+    cardList.addItem(cardElement);
+}}, placesSection);
 
-    //create default cards
-initialCards.forEach((data)=>{
-    renderCard(data);
-});
+cardList.renderItems();
 
 //add place card from form
-function addPlace(evt) {
-    evt.preventDefault();
-    renderCard({name: addPlaceTitle.value, link: addPlaceLink.value});
-    closeModal(addPlaceModal);
+function addPlace(data) {
+    const newCard = new Card({name: data.formTitle, link: data.formImageLink}, cardTemplate, handleCardClick);
+    const cardElement = newCard.getElement();
+    cardList.addItem(cardElement);
+    addPlaceModal.close();
 }
-
-addPlaceForm.addEventListener('submit', addPlace);
 
 //handle overlay listener
 document.addEventListener('click', function(evt) {
     if(evt.target.classList.contains('modal')){
-        closeModal(evt.target);
+        changeProfileModal.close();
+        addPlaceModal.close();
     } else if(evt.target.classList.contains('popup-window')){
-        closePopup(evt.target);
+        popupOverlay.close();
     }
 });
 
-//handle escape listeners
-function modalEscapeListener(evt){
-    const modal = document.querySelector('.modal_opened');
-    if(evt.key === "Escape"){
-        closeModal(modal);
-    }
+//enable validation
+const enableValidation = (classes) => {
+    const forms = Array.from(document.querySelectorAll(classes.formSelector));
+
+    forms.forEach((formElement) => {
+        const validator = new FormValidator(classes, formElement);
+        validator.enableValidation();
+    });
 }
+
+enableValidation(classes); 

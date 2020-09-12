@@ -1,7 +1,5 @@
-import { openPopup  } from './utils.js';
-
 class Card {
-    constructor(data, template) {
+    constructor(data, template, handleCardClick) {
         this._card = template.cloneNode(true);
         this._element = this._card.querySelector('.card');
 
@@ -12,19 +10,13 @@ class Card {
         this._image.alt = data.name;
         this._title.textContent = data.name;
 
-        this._image.addEventListener('click', () => {
-            openPopup(data);
-        });
+        this._image.addEventListener('click', handleCardClick.bind(this, data));
 
         this._likeButton = this._card.querySelector('.card__button');
-        this._likeButton.addEventListener('click', () => {
-            this._handleLikeButton();
-        });
+        this._likeButton.addEventListener('click', this._handleLikeButton.bind(this));
 
         this._deleteButton = this._card.querySelector('.card__delete-button');
-        this._deleteButton.addEventListener('click', () => {
-            this._handleDeleteButton();
-        });
+        this._deleteButton.addEventListener('click', this._handleDeleteButton.bind(this));
     }
 
     _handleLikeButton() {
