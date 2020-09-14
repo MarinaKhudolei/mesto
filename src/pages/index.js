@@ -1,25 +1,26 @@
 import '../pages/index.css';
 
-//import initial cards
-import { initialCards } from './initial-cards.js';
+/** import initial cards */
+import { initialCards } from '../scripts/initial-cards.js';
 
-//import classes
-import { Card } from './Card.js';
-import { Section } from './Section.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
-import { classes, FormValidator } from './FormValidator.js';
+/** import classes */
+import { Card } from '../scripts/Card.js';
+import { Section } from '../scripts/Section.js';
+import { PopupWithImage } from '../scripts/PopupWithImage.js';
+import { PopupWithForm } from '../scripts/PopupWithForm.js';
+import { UserInfo } from '../scripts/UserInfo.js';
+import { FormValidator } from '../scripts/FormValidator.js';
+import { classes } from '../scripts/classes.js';
 
-//modals and their buttons
+/** modals and their buttons */
 const changeProfileButton = document.querySelector(".profile__change-button");
 const addPlaceButton = document.querySelector('.content__add-button');
 
-//profile fields
+/** profile fields */
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 
-//form fields
+/** form fields */
 const changeProfileForm = document.querySelector('.form_type_change-profile');
 const changeProfileName = changeProfileForm.querySelector('.form__item_type_name');
 const changeProfileProfession = changeProfileForm.querySelector('.form__item_type_profession');
@@ -28,18 +29,18 @@ const addPlaceForm = document.querySelector('.form_type_add-place');
 const addPlaceTitle = addPlaceForm.querySelector('.form__item_type_title');
 const addPlaceLink = addPlaceForm.querySelector('.form__item_type_image-link');
 
-//create new classes
+/** create new classes */
 const changeProfileModal = new PopupWithForm('modal_type_change-profile', changeProfileFormSubmitHandler, changeProfileForm);
 const addPlaceModal = new PopupWithForm('modal_type_add-place', addPlace, addPlaceForm);
 const popupOverlay = new PopupWithImage('popup-window');
 const userInfo = new UserInfo(profileName, profileProfession);
 
-//handle image open
+/** handle image open */
 function handleCardClick(data){
     popupOverlay.open(data);
 }
 
-//handle submit button state
+/** handle submit button state */
 const disableButton = (form) => {
     const buttonSubmit = form.querySelector(".form__submit-button");
     buttonSubmit.classList.add("form__submit-button_disabled");
@@ -52,7 +53,7 @@ const enableButton = (form) => {
     buttonSubmit.disabled = false;
 };
 
-//handle form errors
+/** handle form errors */
 const clearForm = (form) => {
     const inputs = Array.from(form.querySelectorAll(".form__item"));
     inputs.forEach((inputElement) => {
@@ -63,7 +64,7 @@ const clearForm = (form) => {
     });
 };
 
-//open-close button listeners
+/** open-close button listeners */
 changeProfileButton.addEventListener('click', () => {
     changeProfileModal.open();
     const userData = userInfo.getUserInfo();
@@ -81,34 +82,34 @@ addPlaceButton.addEventListener('click', ()=>{
     disableButton(addPlaceForm);
 });
 
-//submit forms
+/** submit forms */
 function changeProfileFormSubmitHandler(data) {
     userInfo.setUserInfo(data.formName, data.formProf);
 
     changeProfileModal.close();
 }
 
-//create default cards
+/** create default cards */
 const placesSection = document.querySelector('.places');
 const cardTemplate = document.querySelector('#card-template').content;
 
 const cardList = new Section({items: initialCards, renderer: (item) => {
     const card = new Card(item, cardTemplate, handleCardClick);
-    const cardElement = card.getElement();
+    const cardElement = card.getView();
     cardList.addItem(cardElement);
 }}, placesSection);
 
 cardList.renderItems();
 
-//add place card from form
+/** add place card from form */
 function addPlace(data) {
     const newCard = new Card({name: data.formTitle, link: data.formImageLink}, cardTemplate, handleCardClick);
-    const cardElement = newCard.getElement();
+    const cardElement = newCard.getView();
     cardList.addItem(cardElement);
     addPlaceModal.close();
 }
 
-//handle overlay listener
+/** handle overlay listener */
 document.addEventListener('click', function(evt) {
     if(evt.target.classList.contains('modal')){
         changeProfileModal.close();
@@ -118,7 +119,7 @@ document.addEventListener('click', function(evt) {
     }
 });
 
-//enable validation
+/** enable validation */
 const enableValidation = (classes) => {
     const forms = Array.from(document.querySelectorAll(classes.formSelector));
 
