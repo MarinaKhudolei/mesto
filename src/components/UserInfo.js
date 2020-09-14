@@ -2,13 +2,12 @@ class UserInfo {
     constructor(name, profession) {
         this._name = name;
         this._profession = profession;
-
     }
 
     getUserInfo() {
         const userData = {};
-        userData['name'] = this._name.textContent;
-        userData['profession'] = this._profession.textContent;
+        userData["name"] = this._name.textContent;
+        userData["profession"] = this._profession.textContent;
         return userData;
     }
 
