@@ -9,6 +9,8 @@ import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
+import { classes } from "../utils/classes.js";
+import { FormValidator } from "../components/FormValidator.js";
 
 /** modals and their buttons */
 const changeProfileButton = document.querySelector(".profile__change-button");
@@ -48,16 +50,24 @@ function handleCardClick(data) {
     popupOverlay.open(data);
 }
 
+/** create validators */
+function createValidator(form) {
+    const newValidator = new FormValidator(classes, form);
+    newValidator.enableValidation();
+}
+
 /** open-close button listeners */
 changeProfileButton.addEventListener("click", () => {
     changeProfileModal.open();
     const userData = userInfo.getUserInfo();
     changeProfileName.value = userData.name;
     changeProfileProfession.value = userData.profession;
+    createValidator(changeProfileForm);
 });
 
 addPlaceButton.addEventListener("click", () => {
     addPlaceModal.open();
+    createValidator(addPlaceForm);
 });
 
 /** submit forms */

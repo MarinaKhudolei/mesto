@@ -42,8 +42,8 @@ class PopupWithForm extends Popup {
         super.open();
         this.setEventListeners(this._closeButton);
 
-        this._validator = new FormValidator(classes, this._form);
-        this._validator.enableValidation();
+        //this._validator = new FormValidator(classes, this._form);
+        //this._validator.enableValidation();
     }
 
     close() {
