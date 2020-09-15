@@ -1,8 +1,5 @@
 import { Popup } from "./Popup.js";
 
-import { FormValidator } from "./FormValidator.js";
-import { classes } from "../utils/classes.js";
-
 class PopupWithForm extends Popup {
     constructor(popupSelector, submitCallback, form) {
         super(popupSelector);
@@ -41,9 +38,6 @@ class PopupWithForm extends Popup {
     open() {
         super.open();
         this.setEventListeners(this._closeButton);
-
-        //this._validator = new FormValidator(classes, this._form);
-        //this._validator.enableValidation();
     }
 
     close() {
