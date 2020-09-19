@@ -1,0 +1,9 @@
+.profile__image-shadow {
+    position: absolute;
+    top: 47px;
+    left: 47px;
+    width: 26px;
+    height: 26px;
+    z-index: 1000;
+    visibility: hidden;
+}
