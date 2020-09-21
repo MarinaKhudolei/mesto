@@ -14,7 +14,4 @@
 @import url(../blocks/form/__item/_invalid/form__item_invalid.css);
 @import url(../blocks/form/__error/_visible/form__error_visible.css);
 @import url(../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css);
-@import url(../blocks/popup-window/popup-window.css);
-@import url(../blocks/popup-window/_opened/popup-window_opened.css);
-@import url(../blocks/popup/popup.css);
 @import url(../fonts/inter.css);

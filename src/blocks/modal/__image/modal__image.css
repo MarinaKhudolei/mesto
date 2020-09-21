@@ -1,0 +1,6 @@
+.modal__image {
+    object-fit: contain;
+    max-width: 75vw;
+    height: 100%;
+    margin: 0 0 10px;
+  }

@@ -14,10 +14,11 @@ class FormValidator {
         this._buttonSubmit = this._form.querySelector(
             this._submitButtonSelector
         );
+        this._enableValidation();
     }
 
-    _resetDefaultSubmit(formElement) {
-        formElement.addEventListener("submit", (evt) => {
+    _resetDefaultSubmit() {
+        this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
     }
@@ -46,23 +47,32 @@ class FormValidator {
         }
     }
 
-    _enableSubmitButton() {
+    enableSubmitButton() {
         this._buttonSubmit.classList.remove(this._inactiveButtonClass);
         this._buttonSubmit.disabled = false;
     }
 
-    _disableSubmitButton() {
+    disableSubmitButton() {
         this._buttonSubmit.classList.add(this._inactiveButtonClass);
         this._buttonSubmit.disabled = true;
+    }
+
+    hideAllErrors() {
+        this._inputs.forEach((input) => {
+            const errorElement = this._form.querySelector(
+                `#${input.id}-error`
+            );
+            this._hideInputError(errorElement, input);
+        });
     }
 
     _formValidationCheck() {
         this._isFormValid = this._inputs.every((input) => input.validity.valid);
 
         if (this._isFormValid) {
-            this._enableSubmitButton();
+            this.enableSubmitButton();
         } else {
-            this._disableSubmitButton();
+            this.disableSubmitButton();
         }
     }
 
@@ -77,9 +87,9 @@ class FormValidator {
         });
     }
 
-    enableValidation() {
-        this._resetDefaultSubmit(this._form);
-        this._clearForm(this._form);
+    _enableValidation() {
+        this._resetDefaultSubmit();
+        this._clearForm();
         this._formValidationCheck();
 
         this._inputs.forEach((input) => {

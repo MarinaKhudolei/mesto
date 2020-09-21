@@ -1,30 +1,27 @@
 import { Popup } from "./Popup.js";
 
 class PopupWithImage extends Popup {
-    constructor(popupSelector) {
+    constructor(popupSelector, element) {
         super(popupSelector);
-        this._openCloseSelector = "popup-window_opened";
-        this._popupTemplate = document.querySelector("#popup").content;
-        this._popupElement = this._popupTemplate.cloneNode(true);
-        this._popupContainer = this._popupElement.querySelector(".popup");
-        this._popupImage = this._popupContainer.querySelector(".popup__image");
+        this._popupContainer = element.querySelector(".modal__popup-container");
+        this._popupImage = this._popupContainer.querySelector(".modal__image");
         this._popupCaption = this._popupContainer.querySelector(
-            ".popup__caption"
+            ".modal__caption"
         );
-        this._popupCloseButton = this._popupContainer.querySelector(
-            ".popup__close-button"
-        );
+        this._popupSection.append(element);
     }
 
     open(data) {
         super.open();
-        super.setEventListeners(this._popupCloseButton);
-
         this._popupImage.src = data.link;
         this._popupImage.alt = data.name;
         this._popupCaption.textContent = data.name;
+        this._setCloseButtonListener();
+    }
 
-        this._popupSection.append(this._popupElement);
+    close(){
+        this._closeButton.removeEventListener("click", this.close);
+        super.close();
     }
 }
 

@@ -11,16 +11,12 @@ class PopupSubmit extends Popup {
             ".form__submit-button"
         );
         this._submitButtonHandler = this._submitButtonHandler.bind(this);
-        this._closeCallback = null;
-    }
-
-    setCloseCallback(closeCallback) {
-        this._closeCallback = closeCallback;
+        this._submitCallback = null;
     }
 
     _submitButtonHandler(evt) {
         evt.preventDefault();
-        this._closeCallback();
+        this._submitCallback();
         this.close();
     }
 
@@ -29,8 +25,9 @@ class PopupSubmit extends Popup {
         this._submitButton.addEventListener("click", this._submitButtonHandler);
     }
 
-    open() {
+    open(submitCallback) {
         super.open();
+        this._submitCallback = submitCallback;
         this.setEventListeners();
     }
 }

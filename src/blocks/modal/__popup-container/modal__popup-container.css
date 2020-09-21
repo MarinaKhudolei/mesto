@@ -1,9 +1,4 @@
-@import url(./__close-button/popup__close-button.css);
-@import url(./__container/popup__container.css);
-@import url(./__image/popup__image.css);
-@import url(./__caption/popup__caption.css);
-
-.popup {
+.modal__popup-container {
   width: auto;
   max-width: 75vw;
   height: 100%;
@@ -16,13 +11,13 @@
   margin: 90px auto 90px;
 }
 
-.popup:hover {
+.modal__popup-container:hover {
   cursor: default;
 }
 
 @media screen and (max-width: 567px) {
-  .popup {
-    max-height: 300px;
+  .modal__popup-container {
+    
     padding: 0;
     margin: 136px auto 133px
   }

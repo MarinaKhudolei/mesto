@@ -5,14 +5,12 @@ class PopupWithForm extends Popup {
         super(popupSelector);
 
         this._submitCallback = submitCallback;
-        this._openCloseSelector = "modal_opened";
 
-        this._closeButton = this._popupSection.querySelector(
-            ".modal__close-button"
-        );
         this._form = form;
+        this._submitButton = this._form.querySelector(".form__submit-button");
 
         this._handler = this._submitListenerCallback.bind(this);
+        this.setEventListeners();
     }
 
     _getInputValues() {
@@ -30,20 +28,22 @@ class PopupWithForm extends Popup {
         this.close();
     }
 
-    setEventListeners(closeButton) {
-        super.setEventListeners(closeButton);
+    setEventListeners() {
+        this._setCloseButtonListener();
         this._form.addEventListener("submit", this._handler);
-    }
-
-    open() {
-        super.open();
-        this.setEventListeners(this._closeButton);
     }
 
     close() {
         super.close();
-        this._form.removeEventListener("submit", this._handler);
         this._form.reset();
+    }
+
+    renderLoading(isLoading) {
+        if (isLoading) {
+            this._submitButton.textContent = "Сохранение...";
+        } else {
+            this._submitButton.textContent = "Сохранить";
+        }
     }
 }
 
