@@ -30,7 +30,10 @@
 .footer__copyright{color:#545454;font-weight:400;font-size:18px;line-height:1.2;margin:0}@media screen and (max-width:567px){.footer__copyright{font-size:14px;margin:0 19px}}
 .footer{width:100%;padding:0 0 60px;margin:0}@media screen and (max-width:567px){.footer{padding:0 0 36px}}
 .modal__container{max-width:430px;min-width:430px;box-shadow:0 0 25px rgba(0,0,0,.15);border-radius:10px;background-color:#fff;color:#000;padding:34px 36px 37px;box-sizing:border-box;position:relative;display:flex;flex-direction:column}.modal__container:hover{cursor:default}@media screen and (max-width:567px){.modal__container{max-width:270px;padding:17px 18px 19px}}
+.modal__popup-container{width:auto;max-width:75vw;height:100%;max-height:75vh;padding:0;box-sizing:border-box;position:relative;display:flex;flex-direction:column;margin:90px auto}.modal__popup-container:hover{cursor:default}@media screen and (max-width:567px){.modal__popup-container{padding:0;margin:136px auto 133px}}
 .modal__title{font-weight:900;font-size:24px;line-height:1.2;color:#000;margin:0 28px 50px 0;max-width:330px}@media screen and (max-width:567px){.modal__title{font-size:20px;margin:0 0 25px}}
+.modal__caption{color:#fff;font-size:12px;line-height:1.25;margin:0}
+.modal__image{-o-object-fit:contain;object-fit:contain;max-width:75vw;height:100%;margin:0 0 10px}
 .modal__close-button{background-image:url(./images/close-button.svg);background-repeat:no-repeat;background-position:50%;background-size:contain;position:absolute;right:-45px;top:-45px;width:58px;height:58px;opacity:1;transition:opacity .5s linear;cursor:pointer;border:none;background-color:transparent}.modal__close-button:hover{opacity:.6}@media screen and (max-width:567px){.modal__close-button{right:-25px;top:-25px;width:30px;height:30px}}
 .modal{width:100%;height:100%;position:fixed;top:0;left:0;background-color:rgba(0,0,0,.5);display:flex;justify-content:center;align-items:center;visibility:hidden;opacity:0;transition:visibility .5s linear,opacity .5s linear}.modal:hover{cursor:pointer}
 .modal_opened{visibility:visible;opacity:1}
@@ -42,12 +45,5 @@
 .form__item_invalid{border-bottom-color:red}
 .form__error_visible{visibility:visible}
 .form__submit-button_disabled{background-color:transparent;color:rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.15)}
-.popup-window{width:100%;height:100%;position:fixed;top:0;left:0;background-color:rgba(0,0,0,.9);display:flex;justify-content:center;align-items:center;visibility:hidden;opacity:0;transition:visibility .5s linear,opacity .5s linear}.popup-window:hover{cursor:pointer}
-.popup-window_opened{visibility:visible;opacity:1}
-.popup__close-button{background-image:url(./images/close-button.svg);background-repeat:no-repeat;background-position:50%;background-size:contain;position:absolute;right:-45px;top:-45px;width:56px;height:56px;opacity:1;transition:opacity .5s linear;cursor:pointer;border:none;background-color:transparent}.popup__close-button:hover{opacity:.6}@media screen and (max-width:567px){.popup__close-button{right:-25px;top:-25px;width:30px;height:30px}}
-.popup__container{width:auto;max-width:75vw;height:100%;max-height:75vh;padding:0;box-sizing:border-box;position:relative;display:flex;flex-direction:column;margin:90px auto}@media screen and (max-width:567px){.popup__container{max-height:300px;padding:0;margin:136px auto 133px}}
-.popup__image{-o-object-fit:contain;object-fit:contain;max-width:75vw;height:100%;margin:0 0 10px}
-.popup__caption{color:#fff;font-size:12px;line-height:1.25;margin:0}
-.popup{width:auto;max-width:75vw;height:100%;max-height:75vh;padding:0;box-sizing:border-box;position:relative;display:flex;flex-direction:column;margin:90px auto}.popup:hover{cursor:default}@media screen and (max-width:567px){.popup{max-height:300px;padding:0;margin:136px auto 133px}}
 @font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(./vendor/Inter-Regular.woff2) format("woff2"),url(./vendor/Inter-Regular.woff) format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(./vendor/Inter-Medium.woff2) format("woff2"),url(./vendor/Inter-Medium.woff) format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:900;font-display:swap;src:url(./vendor/Inter-Black.woff2) format("woff2"),url(./vendor/Inter-Black.woff) format("woff")}
 
