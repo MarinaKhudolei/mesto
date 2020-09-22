@@ -4,6 +4,8 @@ class Popup {
         this._escListener = this._handleEscClose.bind(this);
         this._overlayListener = this._handleOverlayListener.bind(this);
         this.close = this.close.bind(this);
+        this._closeButton = this._popupSection.querySelector('.modal__close-button');
+        this._closeButton.addEventListener("click", this.close);
     }
 
     open() {
@@ -16,11 +18,6 @@ class Popup {
         this._popupSection.classList.remove("modal_opened");
         document.removeEventListener("keydown", this._escListener);
         document.removeEventListener("click", this._overlayListener);
-    }
-
-    _setCloseButtonListener() {
-        this._closeButton = this._popupSection.querySelector('.modal__close-button');
-        this._closeButton.addEventListener("click", this.close);
     }
 
     _handleEscClose(evt) {

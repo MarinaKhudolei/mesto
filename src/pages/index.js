@@ -70,10 +70,11 @@ const popupSubmit = new PopupSubmit("modal_type_delete-card");
 function handleSubmitPopup(cardId, handleDeleteButton) {
     popupSubmit.open(() => {
         api.deleteCard(cardId)
-        .then(handleDeleteButton)
-        .catch((err) => {
-            console.log(err);
-        });
+        .then(() => {
+            handleDeleteButton();
+            popupSubmit.close();
+        })
+        .catch((err) => console.log(err));
     });
 }
 
@@ -84,8 +85,7 @@ let cardList = null;
 
 Promise.all([api.setProfileInfo(), api.getAllCards()])
 .then(([userData, cardsData]) => {
-    profileName.textContent = userData.name;
-    profileProfession.textContent = userData.about;
+    userInfo.setUserInfo(userData.name, userData.about);
     profileImage.src = userData.avatar;
     userInfo.setId(userData._id);
 
@@ -131,13 +131,12 @@ function changeProfileFormSubmitHandler(data) {
     api.changeProfileInfo(data)
         .then(() => {
             userInfo.setUserInfo(data.formName, data.formProf);
+            changeProfileModal.close();
         })
         .catch((err) => console.log(err))
         .finally(() => {
             changeProfileModal.renderLoading(false);
         });
-
-    changeProfileModal.close();
 }
 
 /** change avatar form submit */
@@ -211,7 +210,9 @@ function addPlace(data) {
 const popupTemplate = document.querySelector("#popup").content;
 const popupElement = popupTemplate.cloneNode(true);
 
-const popupOverlay = new PopupWithImage("modal_type_popup", popupElement);
+document.querySelector(".modal_type_popup").append(popupElement);
+
+const popupOverlay = new PopupWithImage("modal_type_popup");
 /** handle image open */
 function handleCardClick(data) {
     popupOverlay.open(data);
