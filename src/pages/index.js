@@ -206,12 +206,6 @@ function addPlace(data) {
         });
 }
 
-
-const popupTemplate = document.querySelector("#popup").content;
-const popupElement = popupTemplate.cloneNode(true);
-
-document.querySelector(".modal_type_popup").append(popupElement);
-
 const popupOverlay = new PopupWithImage("modal_type_popup");
 /** handle image open */
 function handleCardClick(data) {
